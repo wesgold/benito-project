@@ -1,8 +1,7 @@
-// Main JavaScript - Cave Explorer with 16-bit Pokemon
+// Main JavaScript - Cave Explorer with Custom Monsters
 document.addEventListener('DOMContentLoaded', () => {
     const ctaButton = document.querySelector('.cta-button');
-    const pokemonSprites = document.querySelectorAll('.pokemon-sprite');
-    const neonLights = document.querySelectorAll('.neon-light');
+    const monsterSprites = document.querySelectorAll('.monster-sprite');
 
     // Button functionality
     if (ctaButton) {
@@ -19,9 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.opacity = '1';
     }, 100);
 
-    // Pokemon walking behavior
+    // Monster walking behavior
     const spriteData = [];
-    pokemonSprites.forEach((sprite, index) => {
+    monsterSprites.forEach((sprite, index) => {
         const data = {
             element: sprite,
             x: parseFloat(sprite.style.left || getComputedStyle(sprite).left),
@@ -74,35 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animateSprites);
     }
     animateSprites();
-
-    // Dynamic neon light flickering
-    neonLights.forEach((light, index) => {
-        setInterval(() => {
-            if (Math.random() > 0.85) {
-                light.style.opacity = Math.random() * 0.5 + 0.3;
-                setTimeout(() => {
-                    light.style.opacity = '';
-                }, 150);
-            }
-        }, 2000 + index * 500);
-    });
-
-    // Enhanced parallax effect on mouse move
-    let mouseX = 0.5;
-    let mouseY = 0.5;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX / window.innerWidth;
-        mouseY = e.clientY / window.innerHeight;
-
-        // Move neon lights slightly with mouse
-        neonLights.forEach((light, index) => {
-            const speed = (index + 1) * 5;
-            const x = (mouseX - 0.5) * speed;
-            const y = (mouseY - 0.5) * speed;
-            light.style.transform = `translate(${x}px, ${y}px)`;
-        });
-    });
 
     // Glitch effect on title
     const title = document.querySelector('header h1');
