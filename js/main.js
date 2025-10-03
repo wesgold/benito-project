@@ -29,13 +29,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 100);
     }
-
-    // Ambient cave lighting effect
-    const caveBackground = document.querySelector('.cave-background');
-    if (caveBackground) {
-        setInterval(() => {
-            const randomOpacity = 0.95 + Math.random() * 0.05;
-            caveBackground.style.opacity = randomOpacity;
-        }, 3000);
-    }
 });

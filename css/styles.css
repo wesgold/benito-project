@@ -3,7 +3,7 @@
     --neon-green: #39ff14;
     --neon-pink: #ff10f0;
     --neon-cyan: #00ffff;
-    --dark-purple: #1a0a2e;
+    --dark-purple: #8b5cf6;
     --dark-black: #0a0a0a;
     --text-color: #f5f5f5;
 }
@@ -21,6 +21,9 @@ body {
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
+    -webkit-font-smoothing: none;
+    font-weight: 700;
+    text-rendering: optimizeLegibility;
 }
 
 /* Enhanced Cave Background - High Contrast */
@@ -130,28 +133,44 @@ header {
 
 header h1 {
     font-size: clamp(2rem, 6vw, 4rem);
-    font-weight: 400;
-    letter-spacing: 3px;
+    font-weight: 700;
+    letter-spacing: 4px;
     color: var(--neon-green);
     text-shadow:
-        0 0 10px var(--dark-purple),
-        0 0 20px var(--dark-purple),
-        0 0 30px var(--dark-purple),
-        0 0 40px var(--dark-purple);
-    animation: neonFlicker 3s infinite alternate;
+        0 0 5px var(--neon-green),
+        0 0 10px var(--neon-green),
+        0 0 20px var(--neon-green),
+        0 0 30px var(--neon-green),
+        0 0 40px var(--neon-green),
+        0 0 60px var(--neon-green),
+        2px 2px 0px rgba(0, 0, 0, 0.8);
+    animation: tweakGlow 2s ease-in-out infinite;
     line-height: 1.5;
 }
 
-@keyframes neonFlicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+@keyframes tweakGlow {
+    0%, 100% {
         text-shadow:
-            0 0 10px var(--dark-purple),
-            0 0 20px var(--dark-purple),
-            0 0 30px var(--dark-purple),
-            0 0 40px var(--dark-purple);
+            0 0 5px var(--neon-green),
+            0 0 10px var(--neon-green),
+            0 0 20px var(--neon-green),
+            0 0 30px var(--neon-green),
+            0 0 40px var(--neon-green),
+            0 0 60px var(--neon-green),
+            2px 2px 0px rgba(0, 0, 0, 0.8);
+        transform: scale(1);
     }
-    20%, 24%, 55% {
-        text-shadow: none;
+    50% {
+        text-shadow:
+            0 0 10px var(--neon-green),
+            0 0 20px var(--neon-green),
+            0 0 30px var(--neon-green),
+            0 0 40px var(--neon-green),
+            0 0 60px var(--neon-green),
+            0 0 80px var(--neon-green),
+            0 0 100px var(--neon-green),
+            2px 2px 0px rgba(0, 0, 0, 0.8);
+        transform: scale(1.02);
     }
 }
 
@@ -183,10 +202,14 @@ main {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     margin-bottom: 1.5rem;
     color: var(--dark-purple);
-    font-weight: 400;
-    text-shadow: 0 0 15px var(--dark-purple);
+    font-weight: 700;
+    text-shadow:
+        0 0 10px var(--dark-purple),
+        0 0 20px var(--dark-purple),
+        0 0 30px var(--dark-purple),
+        2px 2px 0px rgba(0, 0, 0, 0.8);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     line-height: 1.5;
 }
 
@@ -202,7 +225,11 @@ main {
     color: var(--neon-green);
     margin-bottom: 0.8rem;
     position: relative;
-    text-shadow: 0 0 5px var(--neon-green);
+    font-weight: 700;
+    text-shadow:
+        0 0 5px var(--neon-green),
+        0 0 10px var(--neon-green),
+        1px 1px 0px rgba(0, 0, 0, 0.8);
     line-height: 1.4;
 }
 
@@ -219,20 +246,32 @@ main {
     color: var(--dark-purple);
     padding: 1rem 2rem;
     font-size: 0.8rem;
-    font-weight: 400;
-    border: 3px solid var(--dark-purple);
-    box-shadow: 0 0 10px var(--dark-purple);
+    font-weight: 700;
+    border: 4px solid var(--dark-purple);
+    box-shadow:
+        0 0 10px var(--dark-purple),
+        0 0 20px var(--dark-purple),
+        inset 0 0 10px rgba(139, 92, 246, 0.2);
     transition: all 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     line-height: 1.4;
+    text-shadow:
+        0 0 5px var(--dark-purple),
+        1px 1px 0px rgba(0, 0, 0, 0.8);
 }
 
 .cta-button:hover {
     background-color: var(--dark-purple);
     color: var(--neon-green);
     transform: translateY(-2px);
-    box-shadow: 0 0 20px var(--dark-purple), 0 0 30px var(--dark-purple);
+    box-shadow:
+        0 0 20px var(--dark-purple),
+        0 0 40px var(--dark-purple),
+        0 0 60px var(--dark-purple);
+    text-shadow:
+        0 0 5px var(--neon-green),
+        1px 1px 0px rgba(0, 0, 0, 0.8);
 }
 
 .cta-button:active {
@@ -260,7 +299,11 @@ footer {
     position: relative;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 0 0 5px var(--neon-pink);
+    font-weight: 700;
+    text-shadow:
+        0 0 5px var(--neon-pink),
+        0 0 10px var(--neon-pink),
+        1px 1px 0px rgba(0, 0, 0, 0.8);
     line-height: 1.5;
 }
 
@@ -314,6 +357,94 @@ footer {
 @keyframes crystalPulse {
     0%, 100% { opacity: 0.9; }
     50% { opacity: 1; }
+}
+
+/* Floating Particles */
+.floating-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-particles::before,
+.floating-particles::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+}
+
+.floating-particles::before {
+    width: 8px;
+    height: 8px;
+    background: var(--neon-green);
+    box-shadow:
+        0 0 10px var(--neon-green),
+        150px 200px 0 2px var(--dark-purple),
+        150px 200px 10px 2px var(--dark-purple),
+        300px 50px 0 1px rgba(57, 255, 20, 0.8),
+        300px 50px 8px 1px rgba(57, 255, 20, 0.8),
+        500px 400px 0 3px var(--dark-purple),
+        500px 400px 12px 3px var(--dark-purple),
+        700px 150px 0 2px rgba(139, 92, 246, 0.8),
+        700px 150px 10px 2px rgba(139, 92, 246, 0.8),
+        900px 350px 0 1px var(--neon-green),
+        900px 350px 8px 1px var(--neon-green),
+        1100px 100px 0 2px var(--dark-purple),
+        1100px 100px 10px 2px var(--dark-purple),
+        200px 500px 0 2px rgba(57, 255, 20, 0.6),
+        200px 500px 8px 2px rgba(57, 255, 20, 0.6),
+        600px 250px 0 1px var(--dark-purple),
+        600px 250px 8px 1px var(--dark-purple);
+    animation: floatParticles1 60s linear infinite;
+}
+
+.floating-particles::after {
+    width: 6px;
+    height: 6px;
+    background: var(--dark-purple);
+    box-shadow:
+        0 0 8px var(--dark-purple),
+        250px 100px 0 2px rgba(57, 255, 20, 0.7),
+        250px 100px 8px 2px rgba(57, 255, 20, 0.7),
+        450px 300px 0 1px var(--dark-purple),
+        450px 300px 8px 1px var(--dark-purple),
+        650px 450px 0 3px rgba(139, 92, 246, 0.7),
+        650px 450px 10px 3px rgba(139, 92, 246, 0.7),
+        850px 200px 0 2px var(--neon-green),
+        850px 200px 8px 2px var(--neon-green),
+        1000px 400px 0 1px var(--dark-purple),
+        1000px 400px 8px 1px var(--dark-purple),
+        100px 350px 0 2px rgba(139, 92, 246, 0.6),
+        100px 350px 8px 2px rgba(139, 92, 246, 0.6),
+        800px 80px 0 2px rgba(57, 255, 20, 0.5),
+        800px 80px 8px 2px rgba(57, 255, 20, 0.5),
+        400px 500px 0 1px var(--dark-purple),
+        400px 500px 8px 1px var(--dark-purple);
+    animation: floatParticles2 70s linear infinite;
+}
+
+@keyframes floatParticles1 {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-1000px) translateX(200px) rotate(360deg);
+    }
+}
+
+@keyframes floatParticles2 {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-1100px) translateX(-150px) rotate(-360deg);
+    }
 }
 
 /* Responsive */
