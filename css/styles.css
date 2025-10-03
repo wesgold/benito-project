@@ -175,12 +175,39 @@ main {
     backdrop-filter: blur(10px);
 }
 
-.hero-text {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1.5rem;
+    color: var(--neon-green);
+    font-weight: 700;
+    text-shadow: 0 0 15px var(--neon-green);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.kit-details {
+    list-style: none;
     margin-bottom: 2rem;
+    text-align: left;
+    display: inline-block;
+}
+
+.kit-details li {
+    font-size: 1rem;
     color: var(--neon-cyan);
-    font-weight: 400;
-    text-shadow: 0 0 10px var(--neon-cyan);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+    text-shadow: 0 0 5px var(--neon-cyan);
+}
+
+.kit-details li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--neon-green);
+    font-size: 1.5rem;
+    line-height: 1;
 }
 
 .cta-button {
@@ -252,351 +279,6 @@ footer {
     width: 100%;
 }
 
-/* Custom Monster Sprites - 16-bit Style */
-.monster-sprite {
-    position: fixed;
-    width: 160px;
-    height: 160px;
-    z-index: 5;
-    transition: transform 0.1s ease;
-    filter: drop-shadow(0 0 15px rgba(57, 255, 20, 0.4));
-}
-
-.monster-sprite:hover {
-    filter: drop-shadow(0 0 25px rgba(57, 255, 20, 0.6));
-}
-
-.sprite-shadow {
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 15px;
-    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.6) 0%, transparent 70%);
-    z-index: -1;
-}
-
-@keyframes walk {
-    0%, 100% {
-        transform: translateX(0) translateY(0);
-    }
-    25% {
-        transform: translateX(2px) translateY(-3px);
-    }
-    50% {
-        transform: translateX(0) translateY(0);
-    }
-    75% {
-        transform: translateX(-2px) translateY(-3px);
-    }
-}
-
-/* Monster 1 - Multi-eyed Tentacle Creature */
-.monster-1 {
-    top: 15%;
-    left: 5%;
-}
-
-.monster-1 .sprite-body {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Main blob body */
-        radial-gradient(ellipse at center, var(--neon-green) 0%, #2acc14 40%, var(--dark-purple) 100%);
-    clip-path: polygon(
-        50% 20%, 65% 25%, 75% 35%,
-        80% 50%, 75% 65%,
-        65% 75%, 50% 80%,
-        35% 75%, 25% 65%,
-        20% 50%, 25% 35%,
-        35% 25%
-    );
-}
-
-.monster-1 .sprite-eyes {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: var(--neon-green);
-    border-radius: 50%;
-    top: 35%;
-    left: 30%;
-    box-shadow:
-        0 0 12px var(--neon-green),
-        /* Eye 2 */
-        25px 0 0 0 var(--neon-green),
-        25px 0 12px 0 var(--neon-green),
-        /* Eye 3 */
-        12px 15px 0 -2px var(--neon-green),
-        12px 15px 10px -2px var(--neon-green),
-        /* Eye 4 */
-        -5px 10px 0 -3px var(--neon-green),
-        -5px 10px 8px -3px var(--neon-green),
-        /* Eye 5 */
-        30px 10px 0 -3px var(--neon-green),
-        30px 10px 8px -3px var(--neon-green);
-}
-
-.monster-1 .sprite-limbs {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Tentacles */
-        linear-gradient(135deg, transparent 48%, var(--dark-purple) 48%, var(--dark-purple) 52%, transparent 52%),
-        linear-gradient(45deg, transparent 48%, var(--dark-purple) 48%, var(--dark-purple) 52%, transparent 52%),
-        linear-gradient(115deg, transparent 48%, var(--dark-purple) 48%, var(--dark-purple) 52%, transparent 52%);
-    opacity: 0.7;
-}
-
-.monster-1 .sprite-detail {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        repeating-radial-gradient(
-            circle at 50% 50%,
-            transparent 0px,
-            transparent 15px,
-            rgba(57, 255, 20, 0.3) 15px,
-            rgba(57, 255, 20, 0.3) 20px
-        );
-}
-
-/* Monster 2 - Horned Beast */
-.monster-2 {
-    bottom: 15%;
-    right: 5%;
-}
-
-.monster-2 .sprite-body {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Main body with angular shape */
-        linear-gradient(180deg,
-            var(--dark-purple) 0%,
-            #2a1450 30%,
-            var(--neon-green) 50%,
-            #2a1450 70%,
-            var(--dark-purple) 100%);
-    clip-path: polygon(
-        /* Beast silhouette with muscular form */
-        45% 15%, 55% 15%,
-        65% 25%, 75% 40%,
-        80% 55%, 75% 70%,
-        65% 85%, 55% 90%,
-        45% 90%, 35% 85%,
-        25% 70%, 20% 55%,
-        25% 40%, 35% 25%
-    );
-}
-
-.monster-2 .sprite-limbs {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Horns */
-        linear-gradient(145deg, transparent 45%, var(--neon-green) 45%, var(--neon-green) 48%, transparent 48%),
-        linear-gradient(35deg, transparent 52%, var(--neon-green) 52%, var(--neon-green) 55%, transparent 55%),
-        /* Claws */
-        radial-gradient(circle 6px at 15% 70%, var(--neon-green) 0%, transparent 100%),
-        radial-gradient(circle 6px at 85% 70%, var(--neon-green) 0%, transparent 100%);
-}
-
-.monster-2 .sprite-eyes {
-    position: absolute;
-    width: 10px;
-    height: 6px;
-    background: var(--neon-green);
-    border-radius: 50%;
-    top: 30%;
-    left: 38%;
-    box-shadow:
-        0 0 15px var(--neon-green),
-        24px 0 0 0 var(--neon-green),
-        24px 0 15px 0 var(--neon-green);
-    animation: eyeGlow 2s ease-in-out infinite;
-}
-
-@keyframes eyeGlow {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
-}
-
-.monster-2 .sprite-detail {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Muscle striations */
-        repeating-linear-gradient(
-            90deg,
-            transparent 0px,
-            transparent 8px,
-            rgba(57, 255, 20, 0.2) 8px,
-            rgba(57, 255, 20, 0.2) 12px
-        );
-}
-
-/* Monster 3 - Floating Spirit Entity */
-.monster-3 {
-    top: 20%;
-    right: 8%;
-}
-
-.monster-3 .sprite-body {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Ethereal wispy form */
-        radial-gradient(ellipse at 50% 30%, var(--neon-green) 0%, rgba(57, 255, 20, 0.6) 20%, transparent 60%),
-        radial-gradient(ellipse at 50% 50%, var(--dark-purple) 0%, rgba(26, 10, 46, 0.8) 30%, transparent 70%);
-    clip-path: polygon(
-        /* Wispy ghost-like shape */
-        50% 10%, 60% 15%, 70% 25%,
-        75% 40%, 70% 55%, 75% 70%,
-        65% 85%, 55% 95%,
-        45% 95%, 35% 85%,
-        25% 70%, 30% 55%,
-        25% 40%, 30% 25%,
-        40% 15%
-    );
-    opacity: 0.9;
-    animation: spectralFloat 4s ease-in-out infinite;
-}
-
-@keyframes spectralFloat {
-    0%, 100% {
-        transform: translateY(0px);
-        opacity: 0.9;
-    }
-    50% {
-        transform: translateY(-15px);
-        opacity: 0.7;
-    }
-}
-
-.monster-3 .sprite-eyes {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: var(--dark-purple);
-    border: 2px solid var(--neon-green);
-    border-radius: 50%;
-    top: 28%;
-    left: 40%;
-    box-shadow:
-        0 0 20px var(--neon-green),
-        20px 0 0 0 var(--dark-purple),
-        20px 0 0 2px var(--neon-green),
-        20px 0 20px 0 var(--neon-green);
-}
-
-.monster-3 .sprite-limbs {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Wispy tendrils */
-        radial-gradient(ellipse 3px 30px at 30% 80%, rgba(57, 255, 20, 0.5) 0%, transparent 100%),
-        radial-gradient(ellipse 3px 35px at 50% 85%, rgba(57, 255, 20, 0.6) 0%, transparent 100%),
-        radial-gradient(ellipse 3px 30px at 70% 80%, rgba(57, 255, 20, 0.5) 0%, transparent 100%);
-}
-
-.monster-3 .sprite-detail {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(circle at 50% 40%, rgba(57, 255, 20, 0.3) 0%, transparent 40%);
-    animation: spiritPulse 3s ease-in-out infinite;
-}
-
-@keyframes spiritPulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-}
-
-/* Monster 4 - Crawling Insectoid */
-.monster-4 {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.monster-4 .sprite-body {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Segmented body */
-        repeating-linear-gradient(
-            0deg,
-            var(--dark-purple) 0px,
-            var(--dark-purple) 12px,
-            var(--neon-green) 12px,
-            var(--neon-green) 14px,
-            var(--dark-purple) 14px,
-            var(--dark-purple) 26px
-        );
-    clip-path: polygon(
-        /* Insect body segments */
-        40% 20%, 50% 15%, 60% 20%,
-        70% 30%, 75% 45%,
-        70% 60%, 60% 75%,
-        50% 80%, 40% 75%,
-        30% 60%, 25% 45%,
-        30% 30%
-    );
-}
-
-.monster-4 .sprite-limbs {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Multiple legs */
-        linear-gradient(120deg, transparent 48%, var(--neon-green) 48%, var(--neon-green) 50%, transparent 50%),
-        linear-gradient(60deg, transparent 48%, var(--neon-green) 48%, var(--neon-green) 50%, transparent 50%),
-        linear-gradient(135deg, transparent 48%, var(--dark-purple) 48%, var(--dark-purple) 50%, transparent 50%),
-        linear-gradient(45deg, transparent 48%, var(--dark-purple) 48%, var(--dark-purple) 50%, transparent 50%),
-        /* Antennae */
-        linear-gradient(160deg, transparent 49%, var(--neon-green) 49%, var(--neon-green) 51%, transparent 51%),
-        linear-gradient(20deg, transparent 49%, var(--neon-green) 49%, var(--neon-green) 51%, transparent 51%);
-}
-
-.monster-4 .sprite-eyes {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: var(--neon-green);
-    border-radius: 50%;
-    top: 32%;
-    left: 42%;
-    box-shadow:
-        0 0 10px var(--neon-green),
-        16px 0 0 0 var(--neon-green),
-        16px 0 10px 0 var(--neon-green);
-}
-
-.monster-4 .sprite-detail {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background:
-        /* Carapace shine */
-        linear-gradient(135deg,
-            transparent 40%,
-            rgba(57, 255, 20, 0.4) 50%,
-            transparent 60%);
-}
-
 /* Cave Details Layer - Interactive Environment */
 .cave-details {
     position: fixed;
@@ -628,6 +310,108 @@ footer {
     50% { opacity: 1; }
 }
 
+/* Pixelated Error Symbols - Diagonal Pattern */
+.error-symbols {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    pointer-events: none;
+    background-image:
+        /* Error symbol 1 - top right */
+        linear-gradient(var(--neon-green), var(--neon-green)),
+        linear-gradient(var(--neon-green), var(--neon-green)),
+        linear-gradient(var(--dark-purple), var(--dark-purple)),
+        linear-gradient(var(--dark-purple), var(--dark-purple)),
+        /* Error symbol 2 */
+        linear-gradient(var(--neon-pink), var(--neon-pink)),
+        linear-gradient(var(--neon-pink), var(--neon-pink)),
+        linear-gradient(var(--dark-purple), var(--dark-purple)),
+        linear-gradient(var(--dark-purple), var(--dark-purple)),
+        /* Error symbol 3 */
+        linear-gradient(var(--neon-green), var(--neon-green)),
+        linear-gradient(var(--neon-green), var(--neon-green)),
+        linear-gradient(var(--dark-purple), var(--dark-purple)),
+        linear-gradient(var(--dark-purple), var(--dark-purple)),
+        /* Error symbol 4 */
+        linear-gradient(var(--neon-pink), var(--neon-pink)),
+        linear-gradient(var(--neon-pink), var(--neon-pink)),
+        linear-gradient(var(--dark-purple), var(--dark-purple)),
+        linear-gradient(var(--dark-purple), var(--dark-purple)),
+        /* Error symbol 5 */
+        linear-gradient(var(--neon-green), var(--neon-green)),
+        linear-gradient(var(--neon-green), var(--neon-green)),
+        linear-gradient(var(--dark-purple), var(--dark-purple)),
+        linear-gradient(var(--dark-purple), var(--dark-purple)),
+        /* Error symbol 6 - bottom left */
+        linear-gradient(var(--neon-pink), var(--neon-pink)),
+        linear-gradient(var(--neon-pink), var(--neon-pink)),
+        linear-gradient(var(--dark-purple), var(--dark-purple)),
+        linear-gradient(var(--dark-purple), var(--dark-purple));
+    background-size:
+        /* Symbol 1 - X pattern */
+        8px 40px, 40px 8px, 8px 40px, 40px 8px,
+        /* Symbol 2 */
+        8px 40px, 40px 8px, 8px 40px, 40px 8px,
+        /* Symbol 3 */
+        8px 40px, 40px 8px, 8px 40px, 40px 8px,
+        /* Symbol 4 */
+        8px 40px, 40px 8px, 8px 40px, 40px 8px,
+        /* Symbol 5 */
+        8px 40px, 40px 8px, 8px 40px, 40px 8px,
+        /* Symbol 6 */
+        8px 40px, 40px 8px, 8px 40px, 40px 8px;
+    background-position:
+        /* Symbol 1 - top right */
+        85% 10%, 85% 10%, 85% 10%, 85% 10%,
+        /* Symbol 2 */
+        70% 25%, 70% 25%, 70% 25%, 70% 25%,
+        /* Symbol 3 - middle */
+        55% 40%, 55% 40%, 55% 40%, 55% 40%,
+        /* Symbol 4 */
+        40% 55%, 40% 55%, 40% 55%, 40% 55%,
+        /* Symbol 5 */
+        25% 70%, 25% 70%, 25% 70%, 25% 70%,
+        /* Symbol 6 - bottom left */
+        10% 85%, 10% 85%, 10% 85%, 10% 85%;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    filter: drop-shadow(0 0 10px var(--neon-green)) drop-shadow(0 0 10px var(--neon-pink));
+    animation: errorGlitch 5s infinite;
+}
+
+@keyframes errorGlitch {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translate(0, 0);
+    }
+    10% {
+        opacity: 0.8;
+        transform: translate(2px, -2px);
+    }
+    20% {
+        opacity: 0.4;
+        transform: translate(-2px, 2px);
+    }
+    30% {
+        opacity: 0.7;
+        transform: translate(0, 0);
+    }
+    50% {
+        opacity: 0.5;
+    }
+    70% {
+        opacity: 0.8;
+        transform: translate(-1px, 1px);
+    }
+    80% {
+        opacity: 0.6;
+        transform: translate(1px, -1px);
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     header {
@@ -636,11 +420,6 @@ footer {
 
     .social-links {
         gap: 1.5rem;
-    }
-
-    .monster-sprite {
-        width: 100px;
-        height: 100px;
     }
 
     .hero-container {
